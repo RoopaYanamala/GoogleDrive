@@ -1,0 +1,47 @@
+Selenium was originally developed by Jason Huggins in 2004 as an internal tool at ThoughtWorks. Huggins was later joined by other programmers and testers at ThoughtWorks, before Paul Hammant joined the team and steered the development of the second mode of operation that would later become "Selenium Remote Control" (RC). The tool was open sourced that year.
+
+In 2005 Dan Fabulich and Nelson Sproul (with help from Pat Lightbody) made an offer to accept a series of patches that would transform Selenium-RC into what it became best known for. In the same meeting, the steering of Selenium as a project would continue as a committee, with Huggins and Hammant being the ThoughtWorks representatives.
+
+In 2007, Huggins joined Google. Together with others like Jennifer Bevan, he continued with the development and stabilization of Selenium RC. At the same time, Simon Stewart at ThoughtWorks developed a superior browser automation tool called WebDriver. In 2009, after a meeting between the developers at the Google Test Automation Conference, it was decided to merge the two projects, and call the new project Selenium WebDriver, or Selenium 2.0.[2]
+
+In 2008, Philippe Hanrigou (then at ThoughtWorks) made "Selenium Grid", which provides a hub allowing the running of multiple Selenium tests concurrently on any number of local or remote systems, thus minimizing test execution time. Grid offered, as open source, a similar capability to the internal/private Google cloud for Selenium RC. Pat Lightbody had already made a private cloud for "HostedQA" which he went on to sell to Gomez, Inc.
+
+The name Selenium comes from a joke made by Huggins in an email, mocking a competitor named Mercury, saying that you can cure mercury poisoning by taking selenium supplements. The others that received the email took the name and ran with it.[3]
+
+Components
+Selenium is composed of several components with each taking on a specific role in aiding the development of web application test automation.[4]
+
+Selenium IDE
+Selenium IDE is a complete integrated development environment (IDE) for Selenium tests. It is implemented as a Firefox Add-On and as a Chrome Extension. It allows for recording, editing and debugging of functional tests. It was previously known as Selenium Recorder. Selenium-IDE was originally created by Shinya Kasatani and donated to the Selenium project in 2006. Selenium IDE was previously little-maintained.[5] Selenium IDE began being actively maintained in 2018.[6][7][8][9]
+
+Scripts may be automatically recorded and edited manually providing autocompletion support and the ability to move commands around quickly. Scripts are recorded in Selenese, a special test scripting language for Selenium. Selenese provides commands for performing actions in a browser (click a link, select an option) and for retrieving data from the resulting pages.
+
+The 2.x version of the Selenium IDE for Firefox stopped working[10] after the Firefox 55 upgrade and has been replaced by Selenium IDE 3.x.[11]
+
+In addition to the official Selenium IDE project, two alternative Selenium IDE browser extensions are actively maintained:[12] Kantu (Open-Source GPL license) and Katalon Recorder (Closed Source).
+
+Selenium client API
+As an alternative to writing tests in Selenese, tests can also be written in various programming languages. These tests then communicate with Selenium by calling methods in the Selenium Client API. Selenium currently provides client APIs for Java, C#, Ruby, JavaScript, R and Python.
+
+With Selenium 2, a new Client API was introduced (with WebDriver as its central component). However, the old API (using class Selenium) is still supported.
+
+Selenium WebDriver
+Selenium WebDriver is the successor to Selenium RC. Selenium WebDriver accepts commands (sent in Selenese, or via a Client API) and sends them to a browser. This is implemented through a browser-specific browser driver, which sends commands to a browser and retrieves results. Most browser drivers actually launch and access a browser application (such as Firefox, Google Chrome, Internet Explorer, Safari, or Microsoft Edge); there is also an HtmlUnit browser driver, which simulates a browser using the headless browser HtmlUnit.
+
+Unlike in Selenium 1, where the Selenium server was necessary to run tests, Selenium WebDriver does not need a special server to execute tests. Instead, the WebDriver directly starts a browser instance and controls it. However, Selenium Grid can be used with WebDriver to execute tests on remote systems (see below). Where possible, WebDriver uses native operating system level functionality rather than browser-based JavaScript commands to drive the browser. This bypasses problems with subtle differences between native and JavaScript commands, including security restrictions.[13]
+
+In practice, this means that the Selenium 2.0 API has significantly fewer calls than does the Selenium 1.0 API. Where Selenium 1.0 attempted to provide a rich interface for many different browser operations, Selenium 2.0 aims to provide a basic set of building blocks from which developers can create their own Domain Specific Language. One such DSL already exists: the Watir project in the Ruby language has a rich history of good design. Watir-webdriver implements the Watir API as a wrapper for Selenium-Webdriver in Ruby. Watir-webdriver is created entirely automatically, based on the WebDriver specification and the HTML specification.
+
+As of early 2012, Simon Stewart (inventor of WebDriver), who was then with Google and now with Facebook, and David Burns of Mozilla were negotiating with the W3C to make WebDriver an internet standard. In July 2012, the working draft was released and the recommendation followed in June 2018.[14] Selenium-Webdriver (Selenium 2.0) is fully implemented and supported in Python, Ruby, Java and C#.
+
+Selenium Remote Control
+Selenium Remote Control (RC) is a server, written in Java, that accepts commands for the browser via HTTP. RC makes it possible to write automated tests for a web application in any programming language, which allows for better integration of Selenium in existing unit test frameworks. To make writing tests easier, Selenium project currently provides client drivers for PHP, Python, Ruby, .NET, Perl and Java. The Java driver can also be used with JavaScript (via the Rhino engine). An instance of selenium RC server is needed to launch html test case - which means that the port should be different for each parallel run.[citation needed] However, for Java/PHP test case only one Selenium RC instance needs to be running continuously.[15]
+
+Selenium Remote Control was a refactoring of Driven Selenium or Selenium B designed by Paul Hammant, credited with Jason as co-creator of Selenium. The original version directly launched a process for the browser in question, from the test language of Java, .Net, Python or Ruby. The wire protocol (called 'Selenese' in its day) was reimplemented in each language port. After the refactor by Dan Fabulich and Nelson Sproul (with help from Pat Lightbody) there was an intermediate daemon process between the driving test script and the browser. The benefits included the ability to drive remote browsers and the reduced need to port every line of code to an increasingly growing set of languages. Selenium Remote Control completely took over from the Driven Selenium code-line in 2006. The browser pattern for 'Driven'/'B' and 'RC' was response/request, which subsequently became known as Comet.
+
+With the release of Selenium 2, Selenium RC has been officially deprecated in favor of Selenium WebDriver.
+
+Selenium Grid
+Selenium Grid is a server that allows tests to use web browser instances running on remote machines. With Selenium Grid, one server acts as the hub. Tests contact the hub to obtain access to browser instances. The hub has a list of servers that provide access to browser instances (WebDriver nodes), and lets tests use these instances. Selenium Grid allows running tests in parallel on multiple machines and to manage different browser versions and browser configurations centrally (instead of in each individual test).
+
+The ability to run tests on remote browser instances is useful to spread the load of testing across several machines and to run tests in browsers running on different platforms or operating systems. The latter is particularly useful in cases where not all browsers to be used for testing can run on the same platform.
